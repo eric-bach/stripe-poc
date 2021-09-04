@@ -1,7 +1,5 @@
 const express = require('express');
-const stripe = require('stripe')(
-  'sk_test_51JS0PTHFPm42d8JmI4SjoOCeWZfPUXWvIols3VG8eJcJjgft60UWNQ5zxIgJrnqusxCUAC0rSLElZyjFbZaQHOgt00WCPN8lRj'
-);
+const stripe = require('stripe')({ STRIPE_SECRET_ID });
 
 const app = express();
 
