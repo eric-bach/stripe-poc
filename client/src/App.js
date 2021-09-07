@@ -8,24 +8,30 @@ class App extends Component {
 
   componentDidMount() {
     this.callBackendAPI()
-      .then((res) => this.setState({ data: res.express }))
-      .catch((err) => console.log(err));
+    .catch((err) => console.log(err));
   }
 
   // fetching the GET route from the Express server which matches the GET route from server.js
   callBackendAPI = async () => {
-    const response = await fetch('/health');
-    const body = await response.json();
+    var status = 'NOT CONNECTED';
 
-    console.log(`Server response: ${JSON.stringify(body)}`);
+    try {
+      const response = await fetch('http://localhost:5000/health');
+      const body = await response.json();
 
-    if (response.status !== 200) {
-      throw Error(body.message);
-    }
+      console.log(`Server response: ${JSON.stringify(body)}`);
+      status = body.express;
 
-    this.setState({ status: body.express });
+      if (response.status !== 200) {
+        throw Error(body.message);
+      }
+    } catch (e) {}
 
-    return body;
+    this.setState({
+      status: status,
+    });
+
+    return status;
   };
 
   render() {

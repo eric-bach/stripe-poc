@@ -1,9 +1,13 @@
 const express = require('express');
-const stripe = require('stripe')({ STRIPE_SECRET_ID });
+require('dotenv').config();
+const cors = require('cors');
+const stripe = require('stripe');
+
+stripe(process.env.STRIPE_SECRET_ID);
 
 const app = express();
-
 app.use(express.json());
+app.use(cors());
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
