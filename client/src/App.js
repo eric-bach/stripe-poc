@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Container } from 'semantic-ui-react';
+
 import Checkout from './Checkout';
 
 class App extends Component {
@@ -7,8 +9,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.callBackendAPI()
-    .catch((err) => console.log(err));
+    this.callBackendAPI().catch((err) => console.log(err));
   }
 
   // fetching the GET route from the Express server which matches the GET route from server.js
@@ -36,10 +37,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App'>
-        <h1 className='App-title'>Server status: {this.state.status}</h1>
-        <Checkout />
-      </div>
+      <Container style={{ paddingTop: '15px' }}>
+        <div className='App'>
+          <h1 className='App-title'>Stripe POC</h1>
+          <h3 className='App-title'>Server status: {this.state.status}</h3>
+          <Checkout />
+        </div>
+      </Container>
     );
   }
 }

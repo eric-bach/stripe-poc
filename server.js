@@ -1,9 +1,9 @@
 const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
-const stripe = require('stripe');
+var stripe = require('stripe');
 
-stripe(process.env.STRIPE_SECRET_ID);
+stripe = stripe(process.env.STRIPE_SECRET_ID);
 
 const app = express();
 app.use(express.json());
@@ -26,6 +26,9 @@ app.post('/customer', (req, res) => {
       .create({
         name: req.body.name,
         email: req.body.email,
+        metadata: {
+          memberNumber: req.body.memberNumber,
+        },
       })
       .then((cust) => {
         res.send(cust);
