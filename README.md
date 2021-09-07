@@ -6,7 +6,7 @@ Configure Stripe
 
 1. Rename `.env.example` to `.env`
 
-2. Enter the Stripe Secret Key
+2. Enter the STRIPE_SECRET_KEY
 
 Start the server
 

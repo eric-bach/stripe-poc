@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 
 import Checkout from './Checkout';
 
@@ -39,8 +39,12 @@ class App extends Component {
     return (
       <Container style={{ paddingTop: '15px' }}>
         <div className='App'>
-          <h1 className='App-title'>Stripe POC</h1>
-          <h3 className='App-title'>Server status: {this.state.status}</h3>
+          <Header as='h2'>
+            Stripe POC
+            <Header.Subheader>
+              Server status: {this.state.status}
+            </Header.Subheader>
+          </Header>
           <Checkout />
         </div>
       </Container>
